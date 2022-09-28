@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Online Courses - Learn Anything, On Your Schedule | edured{% endblock  %}
+{% block stylesheet%}
+<link rel="stylesheet" href= "{% static 'company/css/style.css' %}">
+{% endblock%}
+{% block content %}
+<br>
+<div class="cover container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 w-100">
+        <div class="cover_details col mb-4 rounded-3 ">
+            <h1>Learn to Code
+                <br>
+                for Free
+            </h1>
+            <p>
+                Learn to code with our beginner-friendly tutorials and examples. Read tutorials, try examples,
+                write programs, and learn to code.
+            
+            </p>
+        </div>
+        <div class="cover_photo col mb-4 rounded-3">
+            <img class="img-fluid" src= "{% static 'company/img/learning.png' %}" alt="">
+        </div>
+
+
+    </div>
+
+
+</div>
+<div class="cover container" id="courses">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 w-100 m-auto">
+        <div class="courses col mb-4 ">
+            <h2>Choose what to learn
+            </h2>
+            <p>
+                Start learning popular programming languages.
+
+            </p>
+        </div>
+        <div class="col mb-4 coursebox">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 w-100 m-auto">
+                {% for i in course%}
+                <div class="course_list col mb-4 rounded-3">
+                    <a class="text-decoration-none" style="color: unset;" href = "{% url 'company:lessons' course_id=i.course_id %}">
+                        <div class="course_list_in">
+                            <div class="mt-2">
+                                <div class="imgcontainer"><img src="/media/{{i.course_img}}" alt="">
+                                </div>
+                                <div class="course_name">{{i.course_name}}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock  %}

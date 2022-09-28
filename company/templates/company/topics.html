@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block stylesheet %}
+<link rel="stylesheet" href= "{% static 'company/css/lessons.css' %}">
+{% endblock  %}
+{% block content %}
+
+<div class="cover container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 w-100">
+        <div class="index-table col mb-4 rounded-3 ">
+            <div class="index-table-content">Getting started with our first program
+                <ul>
+                    {% for i in topics %}
+                    {% if i.related_course == courses.course_name %}
+                    <a href="{% url 'company:topics' courses.course_id i.topic_id %}"><li>{{i.topic_name}}</li></a>
+                    
+                    {% endif %}
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="index-table-content">
+                {{data.slug}}
+            </div>
+            <div class="index-table-content"></div>
+            <div class="index-table-content"></div>
+            <div class="index-table-content">25632</div>
+        </div>
+        <div class="course-content col mb-4 rounded-3 ">
+            <div id="courseContent" class="course-content-topics">
+                {{data.slug}}
+                {{topic_id.topic_data|linebreaks}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
